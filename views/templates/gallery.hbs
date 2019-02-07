@@ -1,0 +1,17 @@
+<span id="author">{{author}}</span>
+<span id="link">{{link}}</span>
+<img src="{{link}}" alt="gallery photo" srcset="">
+<div>{{description}}</div>
+
+<form action="/gallery/{{id}}?_method=DELETE" method="POST" enctype="application/x-www-form-urlencoded">
+  <input type="submit" value="Delete">
+</form>
+<form action="/gallery/{{id}}/edit?_method=GET" method="POST" enctype="application/x-www-form-urlencoded">
+  <input type="submit" value="Edit">
+</form>
+
+{{#each attributes}}
+<span id="mainAuthor">{{author}}</span>
+<span id="mainLink">{{link}}</span>
+<img src="{{link}}" alt="gallery photo" srcset="" id="mainPhoto">
+{{/each}}
