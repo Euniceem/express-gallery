@@ -1,3 +1,4 @@
+{{#attributes}}
 <span id="author">{{author}}</span>
 <span id="link">{{link}}</span>
 <img src="{{link}}" alt="gallery photo" srcset="">
@@ -9,8 +10,9 @@
 <form action="/gallery/{{id}}/edit?_method=GET" method="POST" enctype="application/x-www-form-urlencoded">
   <input type="submit" value="Edit">
 </form>
+{{/attributes}}
 
-{{#each attributes}}
+{{#each attributesB}}
 <span id="mainAuthor">{{author}}</span>
 <span id="mainLink">{{link}}</span>
 <img src="{{link}}" alt="gallery photo" srcset="" id="mainPhoto">
