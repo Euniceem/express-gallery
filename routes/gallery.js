@@ -27,12 +27,10 @@ router.get('/:id', (req, res) => {
     .then(photos => {
       let attributesB = [];
 
-
       photos.map(photos => {
         attributesB.push(photos.attributes);
       })
       attributesB = attributesB.splice(1, 3);
-      console.log("BBBBBBBB::::", attributesB)
 
       Photo.where({ id: id })
         .fetchAll()
@@ -42,76 +40,69 @@ router.get('/:id', (req, res) => {
           photo.map(photo => {
             attributes.push(photo.attributes);
           })
-          console.log("Attributes:", attributes)
-
           let data = {
             attributes: attributes,
             attributesB: attributesB
           }
-          console.log("DATA", data)
           res.render('templates/gallery', data)
         })
+    });
+});
+
+router.get('/:id/edit', (req, res) => {
+  let id = Number(req.params.id);
+
+  return Photo.where({ id: id })
+    .fetchAll()
+    .then(photo => {
+      let attribute = [];
+
+      photo.map(photo => {
+        attribute.push(photo.attributes)
+      })
+      console.log(attribute)
+      res.render('templates/edit', attribute)
     })
-})
+});
 
-// knex.delete('photos')
-//   .select('id', 'author', 'link', 'description')
-//   .whereNot('id', id)
-//   .then((photos) => {
-//     console.log(photos)
-//     res.render('templates/gallery', photos.splice(0, 3))
-//   })
+router.post('/', (req, res) => {
+  let body = req.body;
 
-// });
+  Photo.forge({
+    author: body.author,
+    link: body.link,
+    description: body.description
+  })
+    .save(null, { method: 'insert' })
+    .then(() => {
+      res.redirect('/gallery')
+    })
+});
 
-// router.get('/:id/edit', (req, res) => {
-//   let id = Number(req.params.id);
+router.put('/:id', (req, res) => {
+  let id = Number(req.params.id);
+  let body = req.body
 
-//   knex('photos')
-//     .select('id', 'author', 'link', 'description')
-//     .where('id', id)
-//     .then((photos) => {
-//       res.render('templates/edit', photos[0])
-//     })
-// });
+  return Photo.where({ id: id })
+    .save(body, { patch: true })
+    .then(() => {
+      res.redirect(`/gallery/${id}`)
+    })
+    .catch(() => {
+      res.redirect('gallery/edit')
+    })
+});
 
-// router.post('/', (req, res) => {
-//   knex('photos')
-//     .insert({
-//       author: req.body.author,
-//       link: req.body.link,
-//       description: req.body.description
-//     })
-//     .then(() => {
-//       res.redirect('/gallery')
-//     })
-// });
+router.delete('/:id', (req, res) => {
+  let id = Number(req.params.id);
+  let body = req.body
 
-// router.put('/:id', (req, res) => {
-//   let id = Number(req.params.id);
-//   let body = req.body
-
-//   knex('photos')
-//     .where('id', id)
-//     .update(body)
-//     .then(() => {
-//       res.redirect(`gallery/${id}`)
-//     })
-//     .catch(() => {
-//       res.redirect('gallery/edit')
-//     })
-// });
-
-// router.delete('/:id', (req, res) => {
-//   let id = Number(req.params.id);
-
-//   knex('photos')
-//     .where('id', id)
-//     .delete()
-//     .then(() => {
-//       res.redirect('/gallery')
-//     })
-// });
+  return Photo.where({ id: id })
+    .destroy(body, { require: true })
+    .then(() => {
+      res.redirect('/gallery')
+    })
+});
 
 
 
