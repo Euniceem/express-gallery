@@ -1,7 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db');
-const Photo = require('../db/models/Photo')
+const Photo = require('../db/models/Photo');
+const User = require('../db/models/User');
+
+//AUTHENTICATION
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { next(); }
+  else { res.redirect('/'); }
+}
+
+
+//ROUTES
 
 router.get('/', (req, res) => {
   Photo.fetchAll()
@@ -16,7 +26,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/new', (req, res) => {
+router.get('/new', isAuthenticated, (req, res) => {
   res.render('templates/new')
 });
 
@@ -65,7 +75,7 @@ router.get('/:id/edit', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
+router.post('/', isAuthenticated, (req, res) => {
   let body = req.body;
 
   Photo.forge({
@@ -79,7 +89,7 @@ router.post('/', (req, res) => {
     })
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', isAuthenticated, (req, res) => {
   let id = Number(req.params.id);
   let body = req.body
 
@@ -93,7 +103,7 @@ router.put('/:id', (req, res) => {
     })
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isAuthenticated, (req, res) => {
   let id = Number(req.params.id);
   let body = req.body
 
