@@ -16,7 +16,7 @@ const User = require('./db/models/User');
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.NODE_ENV || 'development';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'keyboard cat';
-const saltRounds = 12;
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,8 +29,11 @@ app.use(session({
   cookie: { secure: ENV === 'production' }
 
 }));
+//PASSPORT 
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 app.use('/gallery', gallery);
 app.use('/', userRoute);
 
@@ -41,9 +44,7 @@ app.engine('.hbs', exphbs({
   defaultLayout: 'main.hbs'
 }));
 
-//PASSPORT 
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 // after login
 passport.serializeUser((user, done) => {
@@ -57,9 +58,10 @@ passport.serializeUser((user, done) => {
 // after every request
 passport.deserializeUser((user, done) => {
   console.log('deserializing');
-  new User({ id: user.id }).fetch()
+  return new User({ id: user.id }).fetch()
     .then(dbUser => {
-      dbUser = dbUser.toJSON();
+      // dbUser = dbUser.toJSON();
+      console.log(dbUser)
       return done(null, {
         id: user.id,
         username: user.username

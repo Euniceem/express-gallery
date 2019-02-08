@@ -4,7 +4,7 @@ const watch = require('gulp-watch');
 
 //Watch task
 gulp.task('default', function () {
-  watch('./styles/**/*.scss', function () {
+  watch('./sass/**/*.scss', function () {
     gulp
       .src('./sass/**/*.scss')
       .pipe(sass().on('error', sass.logError))

@@ -1,9 +1,81 @@
 $primary-color: #8A8989;
 $secondary-color: #515050;
+$margin-size: 80px;
 
-$primary-font-family: 'Prata', serif;
-$secondary-font-family: 'Playfair Display SC', serif;
 
 body{
-  color: primary-color;
+  color: $primary-color;
+  font-family: Prata, serif;
+  font-size: 12px;
+  margin: $margin-size;
+
+}
+
+h1{
+  font-size: 75px;
+  font-family: Playfair Display SC, serif;
+  color: $secondary-color;
+  border-top: 1px solid $primary-color; 
+  padding-left: 40px;
+}
+
+#titleDescription{
+  font-size: 18px;
+  width: 700px;
+  border-left: 1px solid $primary-color; 
+  position: relative;
+  float: right;
+  top: 20px;
+  right: 0px;
+  padding-left: 5px;
+
+}
+
+#container{
+padding-top: 60px;
+border-bottom: 1px solid $primary-color;
+
+
+  #mainContainer {
+    width: 1300px;
+    height: 580px;
+    .mainPhoto{
+      width: 1300px;
+      height: 580px;
+      border-bottom: 1px solid $primary-color;
+      padding-bottom: 10px;
+    }
+    .mainDescription,.mainAuthor,.mainLink{
+      display: none;
+    }
+  }
+  #secondContainer{
+    display: inline-flex;
+    width: 300px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 55px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 10px;
+
+
+    .author,.link{
+      display: none;
+    }
+    .photo{
+      width: 350px;
+      height: 300px;
+      
+    }
+  }
+
+}
+
+
+
+.photo{
+ width: 300px;
+ height: 280px;
 }

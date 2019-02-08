@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db');
-const Photo = require('../db/models/Photo');
 const User = require('../db/models/User');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
+const saltRounds = 12;
 
 
 //AUTHENTICATION
@@ -18,7 +18,7 @@ function isAuthenticated(req, res, next) {
 
 //METHODS
 router.get('/register', (req, res) => {
-  res.render('./register')
+  res.render('templates/register')
 });
 
 router.get('/login', (req, res) => {
@@ -39,7 +39,7 @@ router.post('/register', (req, res) => {
         .save()
         .then((user) => {
           console.log(user);
-          res.redirect('/login.html');
+          res.redirect('/login');
         })
         .catch((err) => {
           console.log(err);
@@ -50,8 +50,8 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/secret',
-  failureRedirect: '/login.html'
+  successRedirect: '/gallery',
+  failureRedirect: '/login'
 }));
 
 router.get('/logout', (req, res) => {

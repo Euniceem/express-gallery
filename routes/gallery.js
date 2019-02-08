@@ -10,19 +10,26 @@ function isAuthenticated(req, res, next) {
   else { res.redirect('/'); }
 }
 
-
 //ROUTES
 
 router.get('/', (req, res) => {
   Photo.fetchAll()
     .then(photos => {
       let attributes = [];
+      let attribute = [];
 
       photos.map(photo => {
         attributes.push(photo.attributes);
+        attribute.push(photo.attributes);
       });
-      console.log(attributes)
-      res.render('templates/index', { photos: attributes })
+      attribute = attribute.splice(0, 1);
+      attributes = attributes.slice(1)
+
+      let data = {
+        attribute: attribute,
+        attributes: attributes
+      }
+      res.render('templates/index', data)
     })
 });
 
