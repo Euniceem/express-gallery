@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(session({
-  store: new redis({ url: 'redis://localhost:6379', logErrors: true }),
+  store: new redis({ url: 'redis://redis-server:6379', logErrors: true }),
   secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
@@ -103,4 +103,5 @@ passport.use(new LocalStrategy(function (username, password, done) {
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
+  console.log('This is docker!')
 });

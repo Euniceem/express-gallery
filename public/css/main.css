@@ -3,13 +3,42 @@ body {
   font-family: Prata, serif;
   font-size: 12px;
   margin: 80px; }
+  @media only screen and (max-width: 414px) {
+    body {
+      margin: 10px 25px 0px 25px; } }
+
+#login {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end; }
+  #login #loginButton {
+    color: #8A8989;
+    font-size: 12px;
+    border: 1px solid #8A8989;
+    padding: 10px 24px;
+    transition-duration: 0.4s; }
+    @media only screen and (max-width: 414px) {
+      #login #loginButton {
+        padding: 5px 12px;
+        font-size: 10px;
+        border: none; } }
+  #login #loginButton:hover {
+    background-color: #515050;
+    color: white; }
 
 h1 {
   font-size: 75px;
   font-family: Playfair Display SC, serif;
   color: #515050;
   border-top: 1px solid #8A8989;
-  padding-left: 40px; }
+  padding-left: 40px;
+  margin-top: 10px; }
+  @media only screen and (max-width: 414px) {
+    h1 {
+      font-size: 40px;
+      padding-left: 0px;
+      border: none;
+      margin: none; } }
 
 #titleDescription {
   font-size: 18px;
@@ -17,21 +46,38 @@ h1 {
   border-left: 1px solid #8A8989;
   position: relative;
   float: right;
-  top: 20px;
+  top: 25px;
   right: 0px;
   padding-left: 5px; }
+  @media only screen and (max-width: 414px) {
+    #titleDescription {
+      display: none; } }
 
 #container {
   padding-top: 60px;
   border-bottom: 1px solid #8A8989; }
+  @media only screen and (max-width: 414px) {
+    #container {
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly; } }
   #container #mainContainer {
     width: 1300px;
     height: 580px; }
+    @media only screen and (max-width: 414px) {
+      #container #mainContainer {
+        width: 350px;
+        height: 150px; } }
     #container #mainContainer .mainPhoto {
       width: 1300px;
       height: 580px;
       border-bottom: 1px solid #8A8989;
       padding-bottom: 10px; }
+      @media only screen and (max-width: 414px) {
+        #container #mainContainer .mainPhoto {
+          width: 350px;
+          height: 120px; } }
     #container #mainContainer .mainDescription, #container #mainContainer .mainAuthor, #container #mainContainer .mainLink {
       display: none; }
   #container #secondContainer {
@@ -44,12 +90,83 @@ h1 {
     padding-bottom: 10px;
     padding-top: 10px;
     margin: 10px; }
-    #container #secondContainer .author, #container #secondContainer .link {
-      display: none; }
+    @media only screen and (max-width: 414px) {
+      #container #secondContainer {
+        margin: none;
+        padding: none;
+        width: 220px; } }
     #container #secondContainer .photo {
       width: 350px;
       height: 300px; }
+      @media only screen and (max-width: 414px) {
+        #container #secondContainer .photo {
+          width: 310px;
+          height: 150px;
+          padding-bottom: 5px; } }
 
-.photo {
-  width: 300px;
-  height: 280px; }
+#galleryContainer {
+  display: flex; }
+  #galleryContainer #mainGalleryPhoto {
+    width: 800px;
+    height: 500px; }
+    #galleryContainer #mainGalleryPhoto #mainPhoto {
+      width: 800px;
+      height: 500px;
+      padding-bottom: 15px;
+      padding-top: 10px; }
+    #galleryContainer #mainGalleryPhoto #bodyContainer {
+      display: flex;
+      flex-direction: row;
+      margin-left: 10px;
+      margin-right: 10px;
+      justify-content: space-between; }
+      #galleryContainer #mainGalleryPhoto #bodyContainer #buttons #deleteButton {
+        font-size: 14px;
+        color: #8A8989;
+        width: 80px;
+        height: 40px;
+        border: 2px solid #8A8989;
+        transition-duration: 0.4s; }
+      #galleryContainer #mainGalleryPhoto #bodyContainer #buttons #deleteButton:hover {
+        background-color: #515050;
+        color: white; }
+      #galleryContainer #mainGalleryPhoto #bodyContainer #buttons #editButton {
+        font-size: 14px;
+        color: #8A8989;
+        width: 80px;
+        height: 40px;
+        border: 2px solid #8A8989;
+        transition-duration: 0.4s; }
+      #galleryContainer #mainGalleryPhoto #bodyContainer #buttons #editButton:hover {
+        background-color: #515050;
+        color: white; }
+  #galleryContainer #secondaryGalleryPhotos {
+    width: 300px;
+    float: right;
+    flex-direction: column;
+    padding-left: 100px; }
+    #galleryContainer #secondaryGalleryPhotos #photo {
+      height: 250px;
+      width: 300px;
+      padding-bottom: 10px;
+      padding-top: 10px; }
+
+#loginContainer {
+  margin: auto;
+  width: 50%;
+  padding: 80px;
+  border: 2px solid #8A8989;
+  font-size: 20px;
+  width: 200px;
+  height: 300px;
+  text-align: center; }
+  #loginContainer #loginButton {
+    border: 2px solid #8A8989;
+    font-size: 14px;
+    color: #8A8989;
+    width: 80px;
+    height: 40px;
+    transition-duration: 0.4s; }
+  #loginContainer #loginButton:hover {
+    background-color: #515050;
+    color: white; }

@@ -1,6 +1,9 @@
 $primary-color: #8A8989;
 $secondary-color: #515050;
+$hover-color: white;
 $margin-size: 80px;
+$mobile-margin-size: 25px;
+$mobile-width: 414px;
 
 
 body{
@@ -9,6 +12,33 @@ body{
   font-size: 12px;
   margin: $margin-size;
 
+  @media only screen and (max-width: $mobile-width){
+    margin: 10px  $mobile-margin-size 0px $mobile-margin-size;
+  }
+}
+
+#login{
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+
+  #loginButton{
+    color: $primary-color;
+    font-size: 12px;
+    border: 1px solid $primary-color;
+    padding: 10px 24px;
+    transition-duration: 0.4s;
+
+    @media only screen and (max-width: $mobile-width){
+      padding: 5px 12px;
+      font-size: 10px;
+      border: none;
+    }
+  }
+  #loginButton:hover{
+    background-color: $secondary-color;
+    color: $hover-color;
+  }
 }
 
 h1{
@@ -17,6 +47,14 @@ h1{
   color: $secondary-color;
   border-top: 1px solid $primary-color; 
   padding-left: 40px;
+  margin-top: 10px;
+
+  @media only screen and (max-width: $mobile-width){
+   font-size: 40px;
+   padding-left: 0px;
+   border: none;
+   margin: none;
+  }
 }
 
 #titleDescription{
@@ -25,25 +63,44 @@ h1{
   border-left: 1px solid $primary-color; 
   position: relative;
   float: right;
-  top: 20px;
+  top: 25px;
   right: 0px;
   padding-left: 5px;
 
+  @media only screen and (max-width: $mobile-width){
+    display: none;
+  }
 }
 
 #container{
 padding-top: 60px;
 border-bottom: 1px solid $primary-color;
 
+@media only screen and (max-width: $mobile-width){
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly
+}
 
   #mainContainer {
     width: 1300px;
     height: 580px;
+    @media only screen and (max-width: $mobile-width){
+      width: 350px;
+      height: 150px;
+    }
     .mainPhoto{
       width: 1300px;
       height: 580px;
       border-bottom: 1px solid $primary-color;
       padding-bottom: 10px;
+
+      @media only screen and (max-width: $mobile-width){
+        width: 350px;
+        height: 120px;
+        
+      }
     }
     .mainDescription,.mainAuthor,.mainLink{
       display: none;
@@ -59,23 +116,119 @@ border-bottom: 1px solid $primary-color;
     padding-bottom: 10px;
     padding-top: 10px;
     margin: 10px;
-
-
-    .author,.link{
-      display: none;
+    
+    @media only screen and (max-width: $mobile-width){
+     margin: none;
+     padding: none;
+     width: 220px;
     }
+    
     .photo{
       width: 350px;
       height: 300px;
-      
+
+      @media only screen and (max-width: $mobile-width){
+        width: 310px;
+        height: 150px;
+        padding-bottom: 5px;
+      }
+    }
+    }
+  } 
+  
+
+
+
+// CSS FOR /id
+#galleryContainer{
+  display: flex;
+
+  #mainGalleryPhoto{
+    width: 800px;
+    height: 500px;
+  
+    #mainPhoto{
+      width: 800px;
+      height: 500px;
+      padding-bottom: 15px;
+      padding-top: 10px;
+    }
+
+    #bodyContainer{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: space-between;
+
+    #buttons{
+    
+      #deleteButton{
+        font-size: 14px;
+        color: $primary-color;
+        width: 80px;
+        height: 40px;
+        border: 2px solid $primary-color;
+        transition-duration: 0.4s;
+      }
+      #deleteButton:hover {
+        background-color: $secondary-color;
+        color: $hover-color;
+      }
+      #editButton{
+        font-size: 14px;
+        color: $primary-color;
+        width: 80px;
+        height: 40px;
+        border: 2px solid $primary-color;
+        transition-duration: 0.4s;
+      }
+      #editButton:hover{
+        background-color: $secondary-color;
+        color: $hover-color;
+      }
     }
   }
-
 }
 
+  #secondaryGalleryPhotos{
+    width: 300px;
+    float: right;
+    flex-direction: column;
+    padding-left: 100px;
 
-
-.photo{
- width: 300px;
- height: 280px;
+    #photo{
+      height: 250px;
+      width: 300px;
+      padding-bottom: 10px;   
+      padding-top: 10px;   
+    }
+  }
 }
+
+//Login page
+#loginContainer{
+  margin: auto;
+  width: 50%;
+  padding: 80px;
+  border: 2px solid $primary-color;
+  font-size: 20px;
+  width: 200px;
+  height: 300px;
+  text-align: center;
+
+  #loginButton{
+    border: 2px solid $primary-color;
+    font-size: 14px;
+    color: $primary-color;
+    width: 80px;
+    height: 40px;
+    transition-duration: 0.4s;
+  }
+  
+  #loginButton:hover{
+    background-color: $secondary-color;
+    color: $hover-color;
+  }
+}
+

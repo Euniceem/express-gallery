@@ -87,6 +87,7 @@ router.post('/', isAuthenticated, (req, res) => {
 
   Photo.forge({
     author: body.author,
+    title: body.title,
     link: body.link,
     description: body.description
   })
