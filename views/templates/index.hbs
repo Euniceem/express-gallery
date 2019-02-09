@@ -3,7 +3,9 @@
   <div id="mainContainer">
     <span id="mainAuthor" class="mainAuthor">{{author}} - </span>
     <span id="mainTitle" class="mainTitle">{{title}}</span>
-    <img id="mainPhoto" class="mainPhoto" src="{{link}}" alt="gallery photo" srcset="" id="secondPhoto">
+    <a href="/gallery/{{id}}">
+      <img id="mainPhoto" class="mainPhoto" src="{{link}}" alt="gallery photo" srcset="" id="secondPhoto">
+    </a>
     <div id="mainDescription" class="mainDescription">{{description}}</div>
   </div>
   {{/each}}
@@ -11,7 +13,9 @@
 
   {{#each attributes}}
   <div id="secondContainer">
-    <img id="photo" class="photo" src="{{link}}" alt="gallery photo" srcset="" id="secondPhoto">
+    <a href="/gallery/{{id}}">
+      <img id="photo" class="photo" src="{{link}}" alt="gallery photo" srcset="" id="secondPhoto">
+    </a>
     <span id="author" class="author">{{author}} - </span>
     <span id="title" class="title">{{title}}</span>
   </div>

@@ -48,6 +48,8 @@ h1{
   border-top: 1px solid $primary-color; 
   padding-left: 40px;
   margin-top: 10px;
+  text-decoration: none !important;
+
 
   @media only screen and (max-width: $mobile-width){
    font-size: 50px;
@@ -213,6 +215,7 @@ width: 1180px;
     margin-right: $margin-size;
     flex-direction: column;
     padding-left: 60px;
+    margin-top: 15px;
 
     @media only screen and (max-width: $mobile-width){
       display: none;
@@ -251,5 +254,22 @@ width: 1180px;
     background-color: $secondary-color;
     color: $hover-color;
   }
+
+  #registerRef{
+    font-size: 12px;
+  }
 }
 
+ #registerSubmitButton{
+  border: 2px solid $primary-color;
+  font-size: 14px;
+  color: $primary-color;
+  width: 80px;
+  height: 40px;
+  transition-duration: 0.4s;
+ }
+
+ #registerSubmitButton:hover{
+  background-color: $secondary-color;
+  color: $hover-color;
+ }

@@ -11,6 +11,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
 const redis = require('connect-redis')(session);
+const flash = require('connect-flash');
 
 const User = require('./db/models/User');
 const PORT = process.env.PORT || 8080;
@@ -21,6 +22,7 @@ const SESSION_SECRET = process.env.SESSION_SECRET || 'keyboard cat';
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
+app.use(flash());
 app.use(session({
   store: new redis({ url: 'redis://redis-server:6379', logErrors: true }),
   secret: SESSION_SECRET,
@@ -34,8 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static('public'));
-app.use('/gallery', gallery);
-app.use('/', userRoute);
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', '.hbs');
@@ -61,7 +62,7 @@ passport.deserializeUser((user, done) => {
   return new User({ id: user.id }).fetch()
     .then(dbUser => {
       // dbUser = dbUser.toJSON();
-      console.log(dbUser)
+      // console.log(dbUser)
       return done(null, {
         id: user.id,
         username: user.username
@@ -79,7 +80,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
     .fetch()
     .then(user => {
       user = user.toJSON();
-      console.log(user)
+      // console.log(user)
 
       if (user === null) {
         return done(null, false, { message: 'bad username or password' });
@@ -100,6 +101,8 @@ passport.use(new LocalStrategy(function (username, password, done) {
     });
 }));
 
+app.use('/gallery', gallery);
+app.use('/', userRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);

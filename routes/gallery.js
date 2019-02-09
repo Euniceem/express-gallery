@@ -7,7 +7,10 @@ const User = require('../db/models/User');
 //AUTHENTICATION
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { next(); }
-  else { res.redirect('/'); }
+  else {
+    req.flash('error', 'You don\'t have authentication! Please log in');
+    res.redirect('/login');
+  }
 }
 
 //ROUTES
@@ -28,13 +31,16 @@ router.get('/', (req, res) => {
       let data = {
         attribute: attribute,
         attributes: attributes
-      }
-      res.render('templates/index', data)
-    })
+      };
+
+      res.status(200);
+      res.render('templates/index', data);
+    });
 });
 
 router.get('/new', isAuthenticated, (req, res) => {
-  res.render('templates/new')
+  res.status(200);
+  res.render('templates/new');
 });
 
 router.get('/:id', (req, res) => {
@@ -47,7 +53,19 @@ router.get('/:id', (req, res) => {
       photos.map(photos => {
         attributesB.push(photos.attributes);
       })
-      attributesB = attributesB.splice(1, 3);
+      // attributesB = attributesB.splice(1);
+
+      while (attributesB.length < 3) {
+        let randomPhotoIndex = Math.floor(Math.random() * photos.length) + 1;
+        let photoB = photos.models.slice(randomPhotoIndex, randomPhotoIndex + 1);
+        console.log(randomPhotoIndex)
+        console.log('photoB', photoB)
+        console.log(photoB[0].attributes)
+
+        if (photoB.length > 0 && photoB[0].attributes.id !== id) {
+          attributesB.push(photoB[0].attributes);
+        }
+      }
 
       Photo.where({ id: id })
         .fetchAll()
@@ -66,20 +84,27 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', isAuthenticated, (req, res) => {
   let id = Number(req.params.id);
 
   return Photo.where({ id: id })
     .fetchAll()
     .then(photo => {
       let attribute = [];
+      let photoUser = photo.attributes.user_id;
+
+      if (photoUser !== req.user.id) {
+        req.flash('error', 'You dont have authentication to edit photos that aren\'t yours');
+        res.redirect(`/gallery/${id}`)
+      }
 
       photo.map(photo => {
         attribute.push(photo.attributes)
-      })
-      console.log(attribute)
-      res.render('templates/edit', attribute)
-    })
+      });
+
+      res.status(200);
+      res.render('templates/edit', attribute);
+    });
 });
 
 router.post('/', isAuthenticated, (req, res) => {
@@ -114,6 +139,13 @@ router.put('/:id', isAuthenticated, (req, res) => {
 router.delete('/:id', isAuthenticated, (req, res) => {
   let id = Number(req.params.id);
   let body = req.body
+  let photoUser = photo.attributes.user_id;
+
+  if (photoUser !== req.user.id) {
+    req.flash('error', 'You dont have authentication to delete photos that aren\'t yours');
+    res.redirect(`/gallery/${id}`)
+  }
+
 
   return Photo.where({ id: id })
     .destroy(body, { require: true })
