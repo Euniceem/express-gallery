@@ -2,13 +2,13 @@ body {
   color: #8A8989;
   font-family: Prata, serif;
   font-size: 12px;
-  margin: 80px; }
+  margin: 60px; }
   @media only screen and (max-width: 414px) {
     body {
       margin: 10px 25px 0px 25px; } }
 
 #login {
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: flex-end; }
   #login #loginButton {
@@ -27,7 +27,7 @@ body {
     color: white; }
 
 h1 {
-  font-size: 75px;
+  font-size: 70px;
   font-family: Playfair Display SC, serif;
   color: #515050;
   border-top: 1px solid #8A8989;
@@ -35,19 +35,19 @@ h1 {
   margin-top: 10px; }
   @media only screen and (max-width: 414px) {
     h1 {
-      font-size: 40px;
+      font-size: 50px;
       padding-left: 0px;
       border: none;
       margin: none; } }
 
 #titleDescription {
-  font-size: 18px;
-  width: 700px;
+  font-size: 16px;
+  width: 600px;
   border-left: 1px solid #8A8989;
   position: relative;
   float: right;
   top: 25px;
-  right: 0px;
+  left: 15px;
   padding-left: 5px; }
   @media only screen and (max-width: 414px) {
     #titleDescription {
@@ -55,7 +55,8 @@ h1 {
 
 #container {
   padding-top: 60px;
-  border-bottom: 1px solid #8A8989; }
+  border-bottom: 1px solid #8A8989;
+  width: 1180px; }
   @media only screen and (max-width: 414px) {
     #container {
       padding-top: 10px;
@@ -63,17 +64,16 @@ h1 {
       flex-direction: column;
       justify-content: space-evenly; } }
   #container #mainContainer {
-    width: 1300px;
-    height: 580px; }
+    width: 1180px;
+    height: 612px;
+    border-bottom: 1px solid #8A8989; }
     @media only screen and (max-width: 414px) {
       #container #mainContainer {
         width: 350px;
         height: 150px; } }
     #container #mainContainer .mainPhoto {
-      width: 1300px;
-      height: 580px;
-      border-bottom: 1px solid #8A8989;
-      padding-bottom: 10px; }
+      width: 1180px;
+      height: 580px; }
       @media only screen and (max-width: 414px) {
         #container #mainContainer .mainPhoto {
           width: 350px;
@@ -82,22 +82,20 @@ h1 {
       display: none; }
   #container #secondContainer {
     display: inline-flex;
-    width: 300px;
+    width: 360px;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: 55px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    margin: 10px; }
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 15px; }
     @media only screen and (max-width: 414px) {
       #container #secondContainer {
         margin: none;
         padding: none;
         width: 220px; } }
     #container #secondContainer .photo {
-      width: 350px;
-      height: 300px; }
+      width: 360px;
+      height: 310px;
+      padding-bottom: 10px; }
       @media only screen and (max-width: 414px) {
         #container #secondContainer .photo {
           width: 310px;
@@ -109,42 +107,66 @@ h1 {
   #galleryContainer #mainGalleryPhoto {
     width: 800px;
     height: 500px; }
+    @media only screen and (max-width: 414px) {
+      #galleryContainer #mainGalleryPhoto {
+        width: 400px;
+        height: 200px; } }
     #galleryContainer #mainGalleryPhoto #mainPhoto {
       width: 800px;
       height: 500px;
       padding-bottom: 15px;
       padding-top: 10px; }
+      @media only screen and (max-width: 414px) {
+        #galleryContainer #mainGalleryPhoto #mainPhoto {
+          width: 360px;
+          height: 180px; } }
     #galleryContainer #mainGalleryPhoto #bodyContainer {
       display: flex;
-      flex-direction: row;
-      margin-left: 10px;
-      margin-right: 10px;
+      flex-direction: column-reverse;
+      flex-wrap: wrap;
       justify-content: space-between; }
-      #galleryContainer #mainGalleryPhoto #bodyContainer #buttons #deleteButton {
+      #galleryContainer #mainGalleryPhoto #bodyContainer #buttons {
+        display: flex;
+        justify-content: space-between; }
+      #galleryContainer #mainGalleryPhoto #bodyContainer #deleteButton {
         font-size: 14px;
         color: #8A8989;
-        width: 80px;
+        width: 150px;
         height: 40px;
         border: 2px solid #8A8989;
         transition-duration: 0.4s; }
-      #galleryContainer #mainGalleryPhoto #bodyContainer #buttons #deleteButton:hover {
+        @media only screen and (max-width: 414px) {
+          #galleryContainer #mainGalleryPhoto #bodyContainer #deleteButton {
+            width: 100px;
+            height: 30px;
+            border: none; } }
+      #galleryContainer #mainGalleryPhoto #bodyContainer #deleteButton:hover {
         background-color: #515050;
         color: white; }
-      #galleryContainer #mainGalleryPhoto #bodyContainer #buttons #editButton {
+      #galleryContainer #mainGalleryPhoto #bodyContainer #editButton {
         font-size: 14px;
         color: #8A8989;
-        width: 80px;
+        width: 150px;
         height: 40px;
         border: 2px solid #8A8989;
         transition-duration: 0.4s; }
-      #galleryContainer #mainGalleryPhoto #bodyContainer #buttons #editButton:hover {
+        @media only screen and (max-width: 414px) {
+          #galleryContainer #mainGalleryPhoto #bodyContainer #editButton {
+            width: 100px;
+            height: 30px;
+            border: none; } }
+      #galleryContainer #mainGalleryPhoto #bodyContainer #editButton:hover {
         background-color: #515050;
         color: white; }
   #galleryContainer #secondaryGalleryPhotos {
     width: 300px;
     float: right;
+    margin-right: 60px;
     flex-direction: column;
-    padding-left: 100px; }
+    padding-left: 60px; }
+    @media only screen and (max-width: 414px) {
+      #galleryContainer #secondaryGalleryPhotos {
+        display: none; } }
     #galleryContainer #secondaryGalleryPhotos #photo {
       height: 250px;
       width: 300px;
