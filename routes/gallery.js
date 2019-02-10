@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
     .then(photos => {
       let attributes = [];
       let attribute = [];
+      console.log(photos.attributes)
 
       photos.map(photo => {
         attributes.push(photo.attributes);
@@ -32,7 +33,7 @@ router.get('/', (req, res) => {
         attribute: attribute,
         attributes: attributes
       };
-
+      console.log(data)
       res.status(200);
       res.render('templates/index', data);
     });
@@ -87,22 +88,24 @@ router.get('/:id', (req, res) => {
 router.get('/:id/edit', isAuthenticated, (req, res) => {
   let id = Number(req.params.id);
 
-  return Photo.where({ id: id })
+  return Photo
+    .where({ id: id })
     .fetchAll()
     .then(photo => {
+      console.log(photo.attributes)
       let attribute = [];
+
+      photo.map(photo => {
+        attribute.push(photo.attributes)
+      });
+
       let photoUser = photo.attributes.user_id;
 
       if (photoUser !== req.user.id) {
         req.flash('error', 'You dont have authentication to edit photos that aren\'t yours');
         res.redirect(`/gallery/${id}`)
       }
-
-      photo.map(photo => {
-        attribute.push(photo.attributes)
-      });
-
-      res.status(200);
+      // res.status(200);
       res.render('templates/edit', attribute);
     });
 });
