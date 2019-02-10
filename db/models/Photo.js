@@ -5,7 +5,7 @@ class Photo extends bookshelf.Model {
   get timestamps() { return true; }
 
   users() {
-    return this.belongsTo('User')
+    return this.belongsTo('Users')
   }
 
 }
