@@ -7,6 +7,7 @@ exports.seed = function (knex, Promise) {
       return knex('photos').insert([
         {
           id: 1,
+          user_id: 1,
           author: 'Sylwia Bartyzel',
           title: 'Taj Mahal, Agra, India',
           link: 'https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80',
@@ -14,6 +15,7 @@ exports.seed = function (knex, Promise) {
         },
         {
           id: 2,
+          user_id: 1,
           author: 'Hugo Jehanne',
           title: 'Roadtrip Switzerland',
           link: 'https://images.unsplash.com/photo-1517607908060-9a66da662869?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
@@ -21,6 +23,7 @@ exports.seed = function (knex, Promise) {
         },
         {
           id: 3,
+          user_id: 1,
           author: 'Chris Holgersson',
           title: 'Vantale Roadtrip',
           link: 'https://images.unsplash.com/photo-1549128584-3e199cb2db4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80',
@@ -28,6 +31,7 @@ exports.seed = function (knex, Promise) {
         },
         {
           id: 4,
+          user_id: 1,
           author: 'Pietro De Grandi',
           title: 'Boat Journey',
           link: 'https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
