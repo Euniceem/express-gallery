@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host: 'postgres-primary-db',
+      host: 'localhost',
       user: 'euniceem1007',
       password: 'password',
       database: 'express_gallery'
