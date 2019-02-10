@@ -114,6 +114,7 @@ router.post('/', isAuthenticated, (req, res) => {
   let body = req.body;
 
   Photo.forge({
+    user_id: req.user.id,
     author: body.author,
     title: body.title,
     link: body.link,
@@ -130,7 +131,13 @@ router.put('/:id', isAuthenticated, (req, res) => {
   let body = req.body
 
   return Photo.where({ id: id })
-    .save(body, { patch: true })
+    .save({
+      user_id: req.user.id,
+      title: body.title,
+      link: body.link,
+      author: body.author,
+      description: body.description
+    }, { patch: true })
     .then(() => {
       res.redirect(`/gallery/${id}`)
     })
