@@ -11,10 +11,17 @@
 </head>
 
 <body>
-  <div id="login">
-    <form action="/logout?_method=GET" enctype="application/x-www-form-urlencoded">
-      <button id="loginButton" type="submit" value="Login">Login/Logout</button>
-    </form>
+  <div id="mainButtonContainer">
+    <div id="new">
+      <form action="/gallery/new?_method=GET" enctype="application/x-www-form-urlencoded">
+        <button id="newButton" type="submit" value="new">Submit a Photo</button>
+      </form>
+    </div>
+    <div id="login">
+      <form action="/logout?_method=GET" enctype="application/x-www-form-urlencoded">
+        <button id="loginButton" type="submit" value="Login">Login/Logout</button>
+      </form>
+    </div>
   </div>
   <div id="titleDescription"> Welcome to our online portfolio, we are a small group of passionate travelers and
     photographers, looking to change

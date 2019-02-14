@@ -1,11 +1,15 @@
-<h1>Add a new photo</h1>
+<h1 id="newTitle">Add a new photo</h1>
 
-<form action="/gallery" method="POST" enctype="application/x-www-form-urlencoded">
-  Author:<br>
-  <input type="text" name="name"><br>
-  Link:<br>
-  <input type="text" name="price"><br>
-  Description:<br>
-  <input type="text" name="inventory"><br><br>
-  <button type="submit">Submit</button>
-</form>
+<div id="newContainer">
+  <form action="/gallery" method="POST" enctype="application/x-www-form-urlencoded">
+    Author:<br>
+    <input type="text" name="author"><br>
+    Title:<br>
+    <input type="text" name="title"><br>
+    Link:<br>
+    <input type="text" name="link"><br>
+    Description:<br>
+    <textarea id="descriptionTextBox" type="text" name="description"></textarea><br><br>
+    <button id="newSubmitButton">Submit</button>
+  </form>
+</div>

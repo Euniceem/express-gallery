@@ -1,10 +1,9 @@
 $primary-color: #8A8989;
 $secondary-color: #515050;
 $hover-color: white;
-$margin-size: 60px;
+$margin-size: 100px;
 $mobile-margin-size: 25px;
 $mobile-width: 414px;
-
 
 body{
   color: $primary-color;
@@ -17,27 +16,55 @@ body{
   }
 }
 
-#login{
+#mainButtonContainer{
   width: 100%;
   display: flex;
   justify-content: flex-end;
 
-  #loginButton{
-    color: $primary-color;
-    font-size: 12px;
-    border: 1px solid $primary-color;
-    padding: 10px 24px;
-    transition-duration: 0.4s;
-
-    @media only screen and (max-width: $mobile-width){
-      padding: 5px 12px;
-      font-size: 10px;
-      border: none;
+  #new{
+    margin-right: 20px;
+    // border-right: 1px solid $primary-color;
+    
+    #newButton{
+      color: $primary-color;
+      font-size: 12px;
+      border: 1px solid $primary-color;
+      border-radius: 8px;
+      padding: 10px 24px;
+      transition-duration: 0.4s;
+  
+      @media only screen and (max-width: $mobile-width){
+        padding: 5px 12px;
+        font-size: 10px;
+        border: none;
+      }
+    }
+    #newButton:hover{
+      background-color: $secondary-color;
+      color: $hover-color;
     }
   }
-  #loginButton:hover{
-    background-color: $secondary-color;
-    color: $hover-color;
+
+  #login{
+    
+    #loginButton{
+      color: $primary-color;
+      font-size: 12px;
+      border: 1px solid $primary-color;
+      border-radius: 8px;
+      padding: 10px 24px;
+      transition-duration: 0.4s;
+  
+      @media only screen and (max-width: $mobile-width){
+        padding: 5px 12px;
+        font-size: 10px;
+        border: none;
+      }
+    }
+    #loginButton:hover{
+      background-color: $secondary-color;
+      color: $hover-color;
+    }
   }
 }
 
@@ -75,9 +102,11 @@ h1{
 }
 
 #container{
-padding-top: 60px;
+padding-top: 20px;
 border-bottom: 1px solid $primary-color;
-width: 1180px;
+width: 100%;
+height: 100%;
+// margin: 20px;
 
 @media only screen and (max-width: $mobile-width){
   padding-top: 10px;
@@ -87,15 +116,19 @@ width: 1180px;
 }
 
   #mainContainer {
-    width: 1180px;
+    width: 100%;
     height: 612px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-bottom: 1px solid $primary-color;
     @media only screen and (max-width: $mobile-width){
       width: 350px;
       height: 150px;
     }
     .mainPhoto{
-      width: 1180px;
+      width: 1200px;
       height: 580px;
 
       @media only screen and (max-width: $mobile-width){
@@ -110,11 +143,14 @@ width: 1180px;
   }
   #secondContainer{
     display: inline-flex;
-    width: 360px;
+    width: 380px;
     flex-direction: row;
     flex-flow: row wrap;
     justify-content: flex-start;
-    padding: 15px;
+    align-content: center;
+    align-items: center;
+    padding: 20px;
+    // margin: auto;
     
     @media only screen and (max-width: $mobile-width){
      margin: none;
@@ -126,8 +162,8 @@ width: 1180px;
       width: 360px;
       height: 310px;
       padding-bottom: 10px;
+    
      
-
       @media only screen and (max-width: $mobile-width){
         width: 310px;
         height: 150px;
@@ -140,10 +176,11 @@ width: 1180px;
 // CSS FOR /id
 #galleryContainer{
   display: flex;
+  width: 100%;
 
   #mainGalleryPhoto{
-    width: 800px;
-    height: 500px;
+    width: 100%;
+    // height: 500px;
 
     @media only screen and (max-width: $mobile-width){
       width: 400px;
@@ -151,8 +188,8 @@ width: 1180px;
     }
   
     #mainPhoto{
-      width: 800px;
-      height: 500px;
+      width: 100%;
+      height: 600px;
       padding-bottom: 15px;
       padding-top: 10px;
 
@@ -211,9 +248,10 @@ width: 1180px;
   }
   #secondaryGalleryPhotos{
     width: 300px;
-    float: right;
-    margin-right: $margin-size;
+    // float: right;
+    // margin-right: $margin-size;
     flex-direction: column;
+    justify-content: flex-end;
     padding-left: 60px;
     margin-top: 15px;
 
@@ -272,4 +310,86 @@ width: 1180px;
  #registerSubmitButton:hover{
   background-color: $secondary-color;
   color: $hover-color;
+ }
+
+ //new
+#newTitle{
+  text-align: center;
+  font-family: Playfair Display SC, serif;
+  color: $secondary-color;
+}
+
+ #newContainer{
+  margin: auto;
+  width: 50%;
+  padding: 80px;
+  border: 2px solid $primary-color;
+  font-size: 20px;
+  text-align: center;
+
+  #newSubmitButton{
+    border: 2px solid $primary-color;
+    font-size: 14px;
+    color: $primary-color;
+    width: 80px;
+    height: 40px;
+    transition-duration: 0.4s;
+  }
+  
+  #newSubmitButton:hover{
+    background-color: $secondary-color;
+    color: $hover-color;
+  }
+
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+  #descriptionTextBox{
+    width: 50%;
+    height: 200px;
+  }
+ }
+
+ //edit
+ #editTitle{
+  text-align: center;
+ }
+
+ #editContainer{
+  margin: auto;
+  width: 50%;
+  padding: 80px;
+  border: 2px solid $primary-color;
+  font-size: 20px;
+  height: 490px;
+  text-align: center;
+
+  #editSubmitButton{
+    border: 2px solid $primary-color;
+    font-size: 14px;
+    color: $primary-color;
+    width: 80px;
+    height: 40px;
+    transition-duration: 0.4s;
+  }
+  
+  #editSubmitButton:hover{
+    background-color: $secondary-color;
+    color: $hover-color;
+  }
+
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  #descriptionText{
+    width: 50%;
+    height: 200px;
+  }
  }

@@ -28,7 +28,7 @@ app.use(session({
   secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: ENV === 'production' }
+  // cookie: { secure: ENV === 'production' }
 
 }));
 //PASSPORT 
@@ -79,8 +79,8 @@ passport.use(new LocalStrategy(function (username, password, done) {
   return new User({ username: username })
     .fetch()
     .then(user => {
+      console.log(user)
       user = user.toJSON();
-      // console.log(user)
 
       if (user === null) {
         return done(null, false, { message: 'bad username or password' });
